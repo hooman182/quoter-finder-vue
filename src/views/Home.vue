@@ -7,6 +7,7 @@
         <i class="fas fa-sync-alt"></i>
         Find New Quote
       </button>
+      <HistorySection />
     </main>
   </div>
 </template>
@@ -15,10 +16,11 @@
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
 import TheContent from "@/components/TheContent";
+import HistorySection from "@/components/HistorySection/HistorySection";
 import { onMounted } from "@vue/runtime-core";
 export default {
   name: "Home",
-  components: { TheContent },
+  components: { TheContent, HistorySection },
   setup() {
     const store = useStore();
     const data = computed(() => store.state.data);
