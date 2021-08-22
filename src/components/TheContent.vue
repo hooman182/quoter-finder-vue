@@ -1,13 +1,11 @@
 <template>
-  <section class="content">
+  <section class="content" v-if="data.content">
     <p class="content-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae est
-      architecto unde hic vel non, id explicabo quae quod nobis error saepe
-      voluptatibus ducimus ratione maiores
+      {{ data.content }}
     </p>
     <div class="content-footer">
-      <span class="content-footer__title">Bill Gates</span>
-      <button class="content-footer__btn">
+      <span class="content-footer__title">{{ data.author }}</span>
+      <button class="content-footer__btn" @click="copyToClipboard">
         <i class="fas fa-clone"></i>
       </button>
       <button class="content-footer__btn">
@@ -15,11 +13,20 @@
       </button>
     </div>
   </section>
+  <div class="loading" v-else></div>
 </template>
 
 <script>
 export default {
   name: "TheContent",
+  props: ["data"],
+  setup(props) {
+    function copyToClipboard() {
+      navigator.clipboard.writeText(props.data.content);
+    }
+
+    return { copyToClipboard };
+  },
 };
 </script>
 
