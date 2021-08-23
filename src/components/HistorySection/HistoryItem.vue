@@ -1,17 +1,15 @@
 <template>
   <div class="item">
     <p class="item-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas iure
-      dolor quos debitis ab? Maxime nostrum quaerat, repellendus fuga ab magni
-      facere pariatur voluptate voluptas eius omnis illum sapiente odit.
+      {{ data.content }}
     </p>
     <div class="item-footer">
-      <span class="item-footer__title">Bill Gates</span>
+      <span class="item-footer__title">{{ data.author }}</span>
       <div>
         <button class="item-footer__btn">
           <i class="fas fa-clone"></i>
         </button>
-        <button class="item-footer__btn">
+        <button class="item-footer__btn" @click="addToBookmark">
           <i class="far fa-bookmark"></i>
         </button>
       </div>
@@ -20,11 +18,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "HistoryItem",
+  props: ["data", "index"],
+  setup(props, { emit }) {
+    function addToBookmark() {
+      emit('addToBookmark', props.index);
+    }
+    return { addToBookmark };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .item {
+  width: 100%;
   background: $white;
   border-radius: 6px;
   overflow: hidden;
