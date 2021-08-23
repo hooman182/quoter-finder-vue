@@ -29,5 +29,16 @@ export default createStore({
         .catch(res => console.log(res));
     }
   },
+  getters: {
+    boomarkedData(state) {
+      const bookmarks = [];
+      for (const data of state.dataHistory) {
+        if (data.bookmark) {
+          bookmarks.push(data)
+        }
+      }
+      return bookmarks;
+    }
+  },
   modules: {},
 });
