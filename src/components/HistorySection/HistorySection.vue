@@ -1,12 +1,19 @@
 <template>
-<!-- v-for="(data, index) in dataHistory" :key="index" -->
-  <section class="section">
-    <HistoryItem  />
-    <button class="btn btn-danger">
-      <i class="fas fa-trash"></i>
-      Clear History
-    </button>
-  </section>
+  <template v-if="dataHistory.length">
+    <section class="section">
+      <HistoryItem
+        v-for="(data, index) in dataHistory"
+        :key="index"
+        :data="data"
+        :index="index"
+        @addToBookmark="bookmarkItem"
+      />
+      <button class="btn btn-danger" @click="handleClearHistory">
+        <i class="fas fa-trash"></i>
+        Clear History
+      </button>
+    </section>
+  </template>
 </template>
 
 <script>
@@ -19,7 +26,13 @@ export default {
   setup() {
     const store = useStore();
     const dataHistory = computed(() => store.state.dataHistory);
-    return { dataHistory };
+    function handleClearHistory() {
+      store.commit("clearHistory");
+    }
+    function bookmarkItem(index) {
+      store.commit('bookmarkItem', index);
+    }
+    return { dataHistory, handleClearHistory, bookmarkItem };
   },
 };
 </script>
