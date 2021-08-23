@@ -12,6 +12,7 @@
         >
       </li>
     </ul>
+    <img src="../assets/img/quote.png" alt="">
   </nav>
 </template>
 
@@ -43,7 +44,7 @@ export default {
     }
   }
   @include screen(768px) {
-    @include flex(row, center, center);
+    @include flex(row-reverse, center, center);
   }
 }
 .router-link-exact-active {
