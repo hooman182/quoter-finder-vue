@@ -24,7 +24,7 @@ export default {
     function copyToClipboard() {
       navigator.clipboard.writeText(props.data.content);
     }
-
+    
     return { copyToClipboard };
   },
 };
