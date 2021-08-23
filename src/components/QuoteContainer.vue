@@ -11,7 +11,7 @@
         </button>
         <button class="item-footer__btn" @click="addToBookmark">
           <i class="far fa-bookmark" v-if="!data.bookmark"></i>
-          <i class="fas fa-bookmark" v-else></i>
+          <i class="fas fa-bookmark" style="color: #a5b1c2" v-else></i>
         </button>
       </div>
     </div>
@@ -21,13 +21,13 @@
 <script>
 export default {
   name: "QuoteContainer",
-  props: ["data"],
+  props: ["data", "index"],
   setup(props, { emit }) {
     function addToBookmark() {
       emit("addToBookmark", props.index);
     }
     function copyToClipboard() {
-      navigator.clipboard.writeText(props.data);
+      navigator.clipboard.writeText(props.data.content);
     }
     return { addToBookmark, copyToClipboard };
   },
@@ -61,6 +61,9 @@ export default {
       padding: 0.25em;
       cursor: pointer;
       color: $white;
+      &:active {
+        color: $lite;
+      }
     }
   }
 }

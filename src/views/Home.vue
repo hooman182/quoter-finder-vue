@@ -17,7 +17,6 @@ import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
 import TheContent from "@/components/TheContent";
 import HistorySection from "@/components/HistorySection";
-import { onMounted } from "@vue/runtime-core";
 export default {
   name: "Home",
   components: { TheContent, HistorySection },
@@ -28,7 +27,7 @@ export default {
     function getNewData() {
       store.dispatch("fetchData");
     }
-    onMounted(() => getNewData());
+
     function bookmarkItem(data) {
       console.log(data);
     }

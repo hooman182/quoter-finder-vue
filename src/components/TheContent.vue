@@ -8,9 +8,6 @@
       <button class="content-footer__btn" @click="copyToClipboard">
         <i class="fas fa-clone"></i>
       </button>
-      <button class="content-footer__btn">
-        <i class="far fa-bookmark"></i>
-      </button>
     </div>
   </section>
   <div class="loading" v-else></div>
@@ -55,6 +52,9 @@ export default {
       margin-right: auto;
       transform: translateX(-2em);
       border-radius: 5px;
+      @include screen(768px) {
+        transform: translateX(-1.5em);
+      }
     }
     &__btn {
       background: none;
@@ -66,6 +66,9 @@ export default {
         color: $lite;
       }
     }
+  }
+  @include screen(768px) {
+    width: 90%;
   }
 }
 </style>

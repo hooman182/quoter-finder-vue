@@ -24,9 +24,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .section {
   width: 50%;
   margin: 2em auto;
+  @include screen(768px) {
+    width: 90%;
+  }
 }
 </style>

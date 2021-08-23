@@ -31,13 +31,7 @@ export default createStore({
   },
   getters: {
     boomarkedData(state) {
-      const bookmarks = [];
-      for (const data of state.dataHistory) {
-        if (data.bookmark) {
-          bookmarks.push(data)
-        }
-      }
-      return bookmarks;
+      return state.dataHistory.filter(data => data.bookmark);
     }
   },
   modules: {},

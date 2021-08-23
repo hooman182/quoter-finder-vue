@@ -5,6 +5,7 @@
         v-for="(data, index) in dataHistory"
         :key="index"
         :data="data"
+        :index="index"
         @addToBookmark="bookmarkItem"
       />
       <button class="btn btn-danger" @click="handleClearHistory">
@@ -41,5 +42,8 @@ export default {
   width: 50%;
   margin: 2em 0 1em 0;
   @include flex(column, none, center);
+  @include screen(768px) {
+    width: 90%;
+  }
 }
 </style>
