@@ -2,10 +2,10 @@
   <nav class="navbar">
     <ul class="navbar-lists">
       <li class="navbar-list">
-        <router-link to="/" class="navbar-list__link">Find quote</router-link>
+        <router-link :to="{name:'Home'}" class="navbar-list__link">Find quote</router-link>
       </li>
       <li class="navbar-list">
-        <router-link to="/#" class="navbar-list__link">Bookmarks</router-link>
+        <router-link :to="{name:'Bookmarks'}" class="navbar-list__link">Bookmarks</router-link>
       </li>
     </ul>
   </nav>
