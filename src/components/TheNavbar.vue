@@ -2,10 +2,14 @@
   <nav class="navbar">
     <ul class="navbar-lists">
       <li class="navbar-list">
-        <router-link :to="{name:'Home'}" class="navbar-list__link">Find quote</router-link>
+        <router-link :to="{ name: 'Home' }" class="navbar-list__link"
+          >Find quote</router-link
+        >
       </li>
       <li class="navbar-list">
-        <router-link :to="{name:'Bookmarks'}" class="navbar-list__link">Bookmarks</router-link>
+        <router-link :to="{ name: 'Bookmarks' }" class="navbar-list__link"
+          >Bookmarks</router-link
+        >
       </li>
     </ul>
   </nav>
@@ -22,8 +26,7 @@ export default {
   width: 100%;
   padding: 0.75em;
   background: $light;
-  display: flex;
-  justify-content: space-between;
+  @include flex(row, space-between, center);
   #{&}-lists {
     list-style: none;
     display: flex;
@@ -33,8 +36,18 @@ export default {
       padding: 0.75em 1em;
       color: $white;
       font-size: 1rem;
-      font-weight: 500;
+      &:active {
+        color: $secondary;
+        font-weight: 600;
+      }
     }
   }
+  @include screen(768px) {
+    @include flex(row, center, center);
+  }
+}
+.router-link-exact-active {
+  color: $primary !important;
+  font-weight: 600;
 }
 </style>
