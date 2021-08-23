@@ -6,11 +6,12 @@
     <div class="item-footer">
       <span class="item-footer__title">{{ data.author }}</span>
       <div>
-        <button class="item-footer__btn">
+        <button class="item-footer__btn" @click="copyToClipboard">
           <i class="fas fa-clone"></i>
         </button>
         <button class="item-footer__btn" @click="addToBookmark">
-          <i class="far fa-bookmark"></i>
+          <i class="far fa-bookmark" v-if="!data.bookmark"></i>
+          <i class="fas fa-bookmark" v-else></i>
         </button>
       </div>
     </div>
@@ -19,13 +20,16 @@
 
 <script>
 export default {
-  name: "HistoryItem",
-  props: ["data", "index"],
+  name: "QuoteContainer",
+  props: ["data"],
   setup(props, { emit }) {
     function addToBookmark() {
-      emit('addToBookmark', props.index);
+      emit("addToBookmark", props.index);
     }
-    return { addToBookmark };
+    function copyToClipboard() {
+      navigator.clipboard.writeText(props.data);
+    }
+    return { addToBookmark, copyToClipboard };
   },
 };
 </script>

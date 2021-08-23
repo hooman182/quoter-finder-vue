@@ -1,11 +1,10 @@
 <template>
   <template v-if="dataHistory.length">
     <section class="section">
-      <HistoryItem
+      <QuoteContainer
         v-for="(data, index) in dataHistory"
         :key="index"
         :data="data"
-        :index="index"
         @addToBookmark="bookmarkItem"
       />
       <button class="btn btn-danger" @click="handleClearHistory">
@@ -19,10 +18,10 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
-import HistoryItem from "./HistoryItem";
+import QuoteContainer from "@/components/QuoteContainer";
 export default {
   name: "HistorySection",
-  components: { HistoryItem },
+  components: { QuoteContainer },
   setup() {
     const store = useStore();
     const dataHistory = computed(() => store.state.dataHistory);

@@ -16,7 +16,7 @@
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
 import TheContent from "@/components/TheContent";
-import HistorySection from "@/components/HistorySection/HistorySection";
+import HistorySection from "@/components/HistorySection";
 import { onMounted } from "@vue/runtime-core";
 export default {
   name: "Home",
